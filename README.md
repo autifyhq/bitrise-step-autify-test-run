@@ -1,6 +1,6 @@
 # Autify test run
 
-TODO
+Run a test plan on Autify for Mobile.
 
 
 ## How to use this Step
