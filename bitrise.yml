@@ -34,6 +34,7 @@ workflows:
     - path::./:
         title: mobile test run --build-id CCC
         inputs:
+        - access_token: ${AUTIFY_ACCESS_TOKEN}
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_id: CCC
         - timeout: ""
@@ -50,6 +51,7 @@ workflows:
     - path::./:
         title: mobile test run --build-id CCC --wait
         inputs:
+        - access_token: ${AUTIFY_ACCESS_TOKEN}
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_id: CCC
         - wait: "true"
@@ -67,6 +69,7 @@ workflows:
     - path::./:
         title: mobile test run --build-path ./android.apk
         inputs:
+        - access_token: ${AUTIFY_ACCESS_TOKEN}
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_path: ./android.apk
         - timeout: ""
@@ -83,6 +86,7 @@ workflows:
     - path::./:
         title: mobile test run --build-path ./ios.app
         inputs:
+        - access_token: ${AUTIFY_ACCESS_TOKEN}
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_path: ./ios.app
         - timeout: ""
@@ -99,6 +103,7 @@ workflows:
     - path::./:
         title: failed
         inputs:
+        - access_token: ${AUTIFY_ACCESS_TOKEN}
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_id: CCC
         - timeout: ""
