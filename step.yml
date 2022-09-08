@@ -8,7 +8,7 @@
 # - Bitrise CLI guides: http://devcenter.bitrise.io/bitrise-cli/
 
 title: |-
-  Autify Run Test
+  Autify Test Run
 summary: |
   Run a test plan on Autify for Mobile.
 description: |
