@@ -3,6 +3,8 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 app:
   envs:
+  - AUTIFY_ACCESS_TOKEN: token
+  - AUTIFY_CLI_INTEGRATION_TEST_INSTALL: 1
   - AUTIFY_TEST_WAIT_INTERVAL_SECOND: 0
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: autify-test-run
@@ -23,13 +25,15 @@ workflows:
         inputs:
         - path: ./_tmp
         - is_create_path: true
+
     - script:
         inputs:
         - content: |
             #!/bin/bash
             set -ex
-            npm i @autifyhq/autify-cli-integration-test
-            npx autify-mobile-generate-fake-app
+            export AUTIFY_CLI_INSTALL_USE_CACHE=1
+            curl -L "$AUTIFY_CLI_INSTALLER_URL" | bash -xe
+            ./autify/node_modules/.bin/autify-mobile-generate-fake-app
 
     - path::./:
         title: mobile test run --build-id CCC
@@ -38,7 +42,8 @@ workflows:
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_id: CCC
         - timeout: ""
-        - autify_path: ./node_modules/.bin/autify-with-proxy
+        - autify_path: autify-with-proxy
+        - autify_cli_installer_url: ${AUTIFY_CLI_INSTALLER_URL}
     - script:
         inputs:
         - content: |
@@ -56,7 +61,8 @@ workflows:
         - build_id: CCC
         - wait: "true"
         - timeout: ""
-        - autify_path: ./node_modules/.bin/autify-with-proxy
+        - autify_path: autify-with-proxy
+        - autify_cli_installer_url: ${AUTIFY_CLI_INSTALLER_URL}
     - script:
         inputs:
         - content: |
@@ -73,7 +79,8 @@ workflows:
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_path: ./android.apk
         - timeout: ""
-        - autify_path: ./node_modules/.bin/autify-with-proxy
+        - autify_path: autify-with-proxy
+        - autify_cli_installer_url: ${AUTIFY_CLI_INSTALLER_URL}
     - script:
         inputs:
         - content: |
@@ -90,7 +97,8 @@ workflows:
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_path: ./ios.app
         - timeout: ""
-        - autify_path: ./node_modules/.bin/autify-with-proxy
+        - autify_path: autify-with-proxy
+        - autify_cli_installer_url: ${AUTIFY_CLI_INSTALLER_URL}
     - script:
         inputs:
         - content: |
@@ -108,6 +116,7 @@ workflows:
         - build_id: CCC
         - timeout: ""
         - autify_path: "false"
+        - autify_cli_installer_url: ${AUTIFY_CLI_INSTALLER_URL}
         is_skippable: true
     - script:
         inputs:
