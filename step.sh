@@ -65,7 +65,7 @@ if [ -n "${timeout:-}" ]; then
   add_args "-t=${timeout}"
 fi
 
-export AUTIFY_CLI_USER_AGENT_SUFFIX="bitrise-step-autify-test-run"
+export AUTIFY_CLI_USER_AGENT_SUFFIX="${AUTIFY_CLI_USER_AGENT_SUFFIX:=bitrise-step-autify-test-run}"
 
 # Execute a command
 OUTPUT=./output.log
