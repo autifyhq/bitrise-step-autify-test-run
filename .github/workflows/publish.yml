@@ -25,4 +25,4 @@ jobs:
           brew install bitrise
           bitrise run share-this-step
         env:
-          BITRISE_STEP_VERSION: ${{ github.ref }}
+          BITRISE_STEP_VERSION: ${{ github.ref_name }}
