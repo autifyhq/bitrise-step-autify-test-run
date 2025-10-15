@@ -108,12 +108,12 @@ workflows:
             test "$AUTIFY_TEST_RUN_EXIT_CODE" = "0"
 
     - path::./:
-        title: mobile test run --build-id CCC --device-ids device1,device2
+        title: mobile test run --build-id CCC --device-ids DDD
         inputs:
         - access_token: ${AUTIFY_ACCESS_TOKEN}
         - autify_test_url: https://mobile-app.autify.com/projects/AAA/test_plans/BBB
         - build_id: CCC
-        - device_ids: device1,device2
+        - device_ids: DDD
         - timeout: ""
         - autify_path: autify-with-proxy
         - autify_cli_installer_url: ${AUTIFY_CLI_INSTALLER_URL}
