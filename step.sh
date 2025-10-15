@@ -8,7 +8,8 @@ function add_args() {
 }
 
 function exit_script() {
-  local code=$?
+  local code
+  code=$?
   envman add --key AUTIFY_TEST_RUN_EXIT_CODE --value "${code}"
 }
 trap exit_script EXIT
@@ -63,6 +64,10 @@ fi
 
 if [ -n "${timeout:-}" ]; then
   add_args "-t=${timeout}"
+fi
+
+if [ -n "${device_ids:-}" ]; then
+  add_args "--device-ids=${device_ids}"
 fi
 
 export AUTIFY_CLI_USER_AGENT_SUFFIX="${AUTIFY_CLI_USER_AGENT_SUFFIX:=bitrise-step-autify-test-run}"

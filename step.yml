@@ -112,6 +112,14 @@ inputs:
     opts:
       title: Autify CLI installer URL
       is_expand: true
+  - device_ids:
+    opts:
+      title: Device IDs to test on (optional)
+      summary: |-
+        Comma-separated list of device IDs to run the test on.
+        If not specified, the test will run on the default devices configured in the test plan.
+        Example: "device1,device2,device3"
+      is_expand: true
 
 outputs:
   - AUTIFY_TEST_RESULT_URL:
