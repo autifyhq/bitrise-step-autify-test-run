@@ -65,6 +65,10 @@ if [ -n "${timeout:-}" ]; then
   add_args "-t=${timeout}"
 fi
 
+if [ -n "${device_ids:-}" ]; then
+  add_args "--device-ids=${device_ids}"
+fi
+
 export AUTIFY_CLI_USER_AGENT_SUFFIX="${AUTIFY_CLI_USER_AGENT_SUFFIX:=bitrise-step-autify-test-run}"
 
 # Execute a command
