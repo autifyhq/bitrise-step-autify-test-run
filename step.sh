@@ -8,7 +8,8 @@ function add_args() {
 }
 
 function exit_script() {
-  local code=$?
+  local code
+  code=$?
   envman add --key AUTIFY_TEST_RUN_EXIT_CODE --value "${code}"
 }
 trap exit_script EXIT
